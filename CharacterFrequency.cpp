@@ -4,68 +4,68 @@
 using namespace std;
 
 int main() {
-	int OneLetterArray[128];
-	fstream OneLetterFile;
-	char Letter;
+	int oneLetterArray[128];
+	fstream oneLetterFile;
+	char letter;
 	
-	OneLetterFile.open("Pandas.txt");
-	if (!OneLetterFile) {
+	oneLetterFile.open("Pandas.txt");
+	if (!oneLetterFile) {
 		cout << "File not found.";
 		return 0;
 	}
 	
-	for (int OneLetterIndex = 0; OneLetterIndex < 128; ++OneLetterIndex) {
-		OneLetterArray[OneLetterIndex] = 0;
+	for (int oneLetterIndex = 0; oneLetterIndex < 128; ++oneLetterIndex) {
+		oneLetterArray[oneLetterIndex] = 0;
 	}
-	Letter = OneLetterFile.get();
-	while (Letter != EOF) {
-		Letter = toupper(Letter);
-		++OneLetterArray[Letter];
-		Letter = OneLetterFile.get();
+	letter = oneLetterFile.get();
+	while (letter != EOF) {
+		letter = toupper(letter);
+		++oneLetterArray[letter];
+		letter = oneLetterFile.get();
 	}
 	
 	cout << "All letters, which repeat in this file: " << endl << "\n";
-	for (Letter = 'A'; Letter <= 'Z'; ++Letter) {
-		if (OneLetterArray[Letter]) {
-			cout << Letter << " : " << OneLetterArray[Letter] << "\n";
+	for (letter = 'A'; letter <= 'Z'; ++letter) {
+		if (oneLetterArray[letter]) {
+			cout << letter << " : " << oneLetterArray[letter] << "\n";
 		}
 	}
 
     cout << "\n";
 
-	int TwoLetterArray[128][128];
-	fstream TwoLetterFile;
+	int twoLetterArray[128][128];
+	fstream twoLetterFile;
 	
-	TwoLetterFile.open("Pandas.txt");
-	if (!TwoLetterFile) {
+	twoLetterFile.open("Pandas.txt");
+	if (!twoLetterFile) {
 		cout << "File not found.";
 		return 0;
 	}
 	
-	for (int FirstIndex = 0; FirstIndex < 128; ++FirstIndex) {
-		for (int SecondIndex = 0; SecondIndex < 128; ++SecondIndex) {
-		    TwoLetterArray[FirstIndex][SecondIndex] = 0;
+	for (int firstIndex = 0; firstIndex < 128; ++firstIndex) {
+		for (int secondIndex = 0; secondIndex < 128; ++secondIndex) {
+		    twoLetterArray[firstIndex][secondIndex] = 0;
 		}
 	}
 	
-	char FirstLetter, SecondLetter;
+	char firstLetter, secondLetter;
 	
-	FirstLetter = TwoLetterFile.get();
-	SecondLetter = TwoLetterFile.get();
+	firstLetter = twoLetterFile.get();
+	secondLetter = twoLetterFile.get();
 	
-	while (SecondLetter != EOF) {
-		FirstLetter = toupper(FirstLetter);
-		SecondLetter = toupper(SecondLetter);
-		++TwoLetterArray[FirstLetter][SecondLetter];
-		FirstLetter = TwoLetterFile.get();
-		SecondLetter = TwoLetterFile.get();
+	while (secondLetter != EOF) {
+		firstLetter = toupper(firstLetter);
+		secondLetter = toupper(secondLetter);
+		++twoLetterArray[firstLetter][secondLetter];
+		firstLetter = twoLetterFile.get();
+		secondLetter = twoLetterFile.get();
 	}
 	
 	cout << "All double letters, which repeat in this file: " << endl << "\n";
-	for (FirstLetter = 'A'; FirstLetter <= 'Z'; ++FirstLetter) {
-	    for (SecondLetter = 'A'; SecondLetter <= 'Z'; ++SecondLetter) {
-	        if (TwoLetterArray[FirstLetter][SecondLetter]) {
-	            cout << FirstLetter << SecondLetter << " : " << TwoLetterArray[FirstLetter][SecondLetter] << "\n";
+	for (firstLetter = 'A'; firstLetter <= 'Z'; ++firstLetter) {
+	    for (secondLetter = 'A'; secondLetter <= 'Z'; ++secondLetter) {
+	        if (twoLetterArray[firstLetter][secondLetter]) {
+	            cout << firstLetter << secondLetter << " : " << twoLetterArray[firstLetter][secondLetter] << "\n";
 	        }
 	    }
     }
