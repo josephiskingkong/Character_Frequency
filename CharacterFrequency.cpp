@@ -1,3 +1,11 @@
+/***********************************
+*                                  *
+*          Perelygin Egor          *
+*              PI-221              *
+*       Character Frequency        *
+*                                  *
+************************************/
+
 #include <iostream>
 #include <fstream>
 
