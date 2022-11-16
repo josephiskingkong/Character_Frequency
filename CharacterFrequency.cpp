@@ -14,7 +14,7 @@ using namespace std;
 int main() {
 	int oneLetterArray[128];
 	fstream oneLetterFile;
-	char letter;
+	char letterIndex;
 	
 	oneLetterFile.open("Pandas.txt");
 	if (!oneLetterFile) {
@@ -25,17 +25,17 @@ int main() {
 	for (int oneLetterIndex = 0; oneLetterIndex < 128; ++oneLetterIndex) {
 		oneLetterArray[oneLetterIndex] = 0;
 	}
-	letter = oneLetterFile.get();
-	while (letter != EOF) {
-		letter = toupper(letter);
-		++oneLetterArray[letter];
-		letter = oneLetterFile.get();
+	letterIndex = oneLetterFile.get();
+	while (letterIndex != EOF) {
+		letterIndex = toupper(letterIndex);
+		++oneLetterArray[letterIndex];
+		letterIndex = oneLetterFile.get();
 	}
 	
 	cout << "All letters, which repeat in this file: " << endl << "\n";
-	for (letter = 'A'; letter <= 'Z'; ++letter) {
-		if (oneLetterArray[letter]) {
-			cout << letter << " : " << oneLetterArray[letter] << "\n";
+	for (letterIndex = 'A'; letterIndex <= 'Z'; ++letterIndex) {
+		if (oneLetterArray[letterIndex] > 1) {
+			cout << letterIndex << " : " << oneLetterArray[letterIndex] << "\n";
 		}
 	}
 
@@ -56,24 +56,24 @@ int main() {
 		}
 	}
 	
-	char firstLetter, secondLetter;
+	char firstLetterIndex, secondLetterIndex;
 	
-	firstLetter = twoLetterFile.get();
-	secondLetter = twoLetterFile.get();
+	firstLetterIndex = twoLetterFile.get();
+	secondLetterIndex = twoLetterFile.get();
 	
-	while (secondLetter != EOF) {
-		firstLetter = toupper(firstLetter);
-		secondLetter = toupper(secondLetter);
-		++twoLetterArray[firstLetter][secondLetter];
-		firstLetter = twoLetterFile.get();
-		secondLetter = twoLetterFile.get();
+	while (secondLetterIndex != EOF) {
+		firstLetterIndex = toupper(firstLetterIndex);
+		secondLetterIndex = toupper(secondLetterIndex);
+		++twoLetterArray[firstLetterIndex][secondLetterIndex];
+		firstLetterIndex = twoLetterFile.get();
+		secondLetterIndex = twoLetterFile.get();
 	}
 	
 	cout << "All double letters, which repeat in this file: " << endl << "\n";
-	for (firstLetter = 'A'; firstLetter <= 'Z'; ++firstLetter) {
-	    for (secondLetter = 'A'; secondLetter <= 'Z'; ++secondLetter) {
-	        if (twoLetterArray[firstLetter][secondLetter]) {
-	            cout << firstLetter << secondLetter << " : " << twoLetterArray[firstLetter][secondLetter] << "\n";
+	for (firstLetterIndex = 'A'; firstLetterIndex <= 'Z'; ++firstLetterIndex) {
+	    for (secondLetterIndex = 'A'; secondLetterIndex <= 'Z'; ++secondLetterIndex) {
+	        if (twoLetterArray[firstLetterIndex][secondLetterIndex] > 1) {
+	            cout << firstLetterIndex << secondLetterIndex << " : " << twoLetterArray[firstLetterIndex][secondLetterIndex] << "\n";
 	        }
 	    }
     }
