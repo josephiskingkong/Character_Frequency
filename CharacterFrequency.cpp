@@ -77,4 +77,5 @@ int main() {
 	        }
 	    }
     }
+    system("pause");
 } 
